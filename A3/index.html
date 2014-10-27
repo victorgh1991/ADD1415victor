@@ -1,0 +1,120 @@
+<html>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+	<title>A3: Acceso remoto SSH</title>
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Administración de Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>A3: Acceso remoto SSH</i></li>
+    <li><b>Alumno:</b> <i>Victor Garcia</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Preparativos</a> | <a href='#bloque2'>Instalación básica</a> | <a href='#bloque3'>Personalización del prompt Bash</a> |<a href='#bloque4'>Autenticación mediante claves públicas</a>  | <a href='#bloque5'>Uso de SSH como túnel para X</a>
+</br> <a href='#bloque6'>Aplicaciones Windows nativas</a> | <a href='#bloque7'>Restricciones de uso</a></div>
+<ul>
+<h1><a id='bloque1'>Preparativos</a></h1>	
+	<li><p>Crear los siguientes usuarios en ssh-server:</li>
+		<ul>
+			<li><p>remoteuser1</p></li>
+			<li><p>remoteuser2</p></li>
+			<li><p>remoteuser3</p></li>
+			<li><p>remoteuser4</p></li>
+		</ul>
+	<li>Añadir en /etc/hosts los equipos ssh-client1 y ssh-client2.</li>
+
+</ br><center><img height='400' width='900' src='./files/Server/2.png'></img><img height='400' width='900' src='./files/Server/3.png'></img></center>
+	
+	
+<h1><a id='bloque2'>Instalación básica</a></h1>
+<li><p>Instalar el servicio SSH en la máquina ssh-server: "apt-get install openssh-server".</li>
+
+</ br><center><img height='400' width='900' src='./files/Server/0.png'>
+
+<li><p>Desde el propio SSH-SERVER, verificar que el servicio está en ejecución: "service ssh status", "/etc/init.d/ssh status", o con "ps -ef|grep ssh"</p></li>
+</ br><center><img height='400' width='900' src='./files/Server/4.png'></img> </center>
+
+<li><p>Comprobar el funcionamiento de la conexión SSH desde cada cliente usando el usuario remoteuser1. Desde el cliente hacemos "ssh remoteuser1@ssh-server".</p></li>
+
+</ br><center><img height='400' width='900' src='./files/Client1/4.png'></img></center>
+
+<li><p>Capturar imagen del intercambio de claves que se produce en el primer proceso de conexión SSH.</p></li>
+</ br><center><img height='400' width='900' src='./files/Client1/3.png'></img></center>
+
+<li><p>Comprobar contenido del fichero $HOME/.ssh/known_hosts. en el equipo cliente.</p></li>
+</ br><center><img height='400' width='900' src='./files/Client1/5.png'></img></center>
+
+<li><p>Comprobamos el funcionamiento de la conexión SSH desde cada cliente usando el usuario remoteuser2. Desde el cliente windows.</p></li>
+
+</ br><center><img height='400' width='900' src='./files/Client2/1.png'></img></center>
+</ br><center><img height='400' width='900' src='./files/Client2/3.png'></img></center>
+
+
+
+</ br><h1><a id='bloque3'>Personalización del prompt Bash</a></h1>
+
+<p>Personalizar Bash según la documentación, para cambiar el color cuando tenemos activa una sesión SSH.</p>
+</ br>
+</ br><center><img height='400' width='900' src='./files/Client1/bashrc.png'></img></center>
+
+
+</ br><h1><a id='bloque4'>Autenticación mediante claves públicas</a></h1>
+
+	<ul>
+		<li>Vamos a configurar autenticación mediante clave pública para acceder con nuestro usuario personal desde el equipo cliente cliente al servidor con el usuario remoteuser4.
+		<li>Iniciamos sesión con nuestro usuario desde la máquina cliente y ejecutamos "ssh-keygen -t rsa" para generar un nuevo par de claves para el usuario en "/home/nuestro-usuario/.ssh/id_rsa" y "/home/nuestro-usuario/.ssh/id_rsa.pub".
+		<li>Ahora vamos a copiar la clave pública (id_rsa.pub) del usuario de la máquina cliente, al fichero "authorized_keys" del usuario remoteuser4 en el servidor. Hacemos "scp .ssh/id_rsa.pub remoteuser4@ssh-server:.ssh/authorized_keys".</li>
+		<li>Ahora podremos acceder remotamente, sin escribir la clave de acceso.</li>
+	</ul>
+</ br><center><img height='400' width='900' src='./files/client4/1.png'></img></center>
+
+
+
+</ br><h1><a id='bloque5'>Uso de SSH como túnel para X</a></h1>
+
+	<ul>
+		<li><p>Instalar en el servidor una aplicación de entorno gráfico(APP1) que no esté en el cliente. Por ejemplo Geany. Si estuviera en el cliente entonces buscar otra aplicación o desinstalarla en el cliente.</p></li>
+		<li>Comprobar funcionamiento de APP1 desde cliente GNU/Linux.</li>
+	</ul>
+</ br><center><img height='400' width='900' src='./files/Client1/6.png'></img></center>
+
+
+</ br><h1><a id='bloque6'>Aplicaciones Windows nativas</a></h1>
+	<li><p>Instalar emulador Wine en el ssh-server.</p></li>
+	<li><p>Comprobar el funcionamiento</p></li>
+	</ br><center><img height='400' width='900' src='./files/Client1/winenotepad.png'></img></center>
+	
+	
+</ br><h1><a id='bloque7'>Restricciones de uso</a></h1>
+
+<li>Vamos a crear una restricción de uso del SSH para un usuario:</li>
+	<ul>
+		<li>En el servidor tenemos el usuario remoteuser2. Desde local en el servidor podemos usar sin problemas el usuario. Pero al tratar de usar el usuario por ssh desde los clientes tendremos permiso denegado.</li>
+	</ul>
+</ br><center><img height='400' width='900' src='./files/Server/IPDeny.png'></img></center>
+
+<li>Restricción en las máquinas:</li>
+
+	<ul>
+		<li>Vamos a crear una restricción para que sólo las máquinas clientes con las IP's autorizadas puedan acceder a nuestro servidor.</li>
+	</ul>
+</ br><center><img height='400' width='900' src='./files/Server/IPAllow.png'></img></center>
+
+<li>Restricción sobre aplicaciones:</li>
+	<ul>
+		<li>En este paso haremos que solo el usuario Remoteuser4 tenga permisos para poder iniciar la APP1</li>
+	</ul>
+</ br><center><img height='400' width='900' src='./files/Server/PermisosAPP1.png'></img> <img height='400' width='900' src='./files/Server/permisosclientegeany.png'></img></center>
+
+</ul>
+
+</body>
+</html>
