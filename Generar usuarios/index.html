@@ -1,0 +1,103 @@
+<html>
+<head>
+	<title>Generar usuarios</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Administraci&oacute;n de Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>Generar usuarios</i></li>
+    <li><b>Componentes del grupo:</b> <i>Victor Garcia</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Instalaci&oacute;n GAWK</a> | <a href='#bloque2'>Desarrollo</a> | <a href='#bloque3'>Comprobaci&oacute;n</a>
+</div>
+<h1><a id='bloque1'>Instalaci&oacute;n GAWK</a></h1>
+<p>Comenzamos la instalacion de gAWK</p>
+<br/>
+<br/>
+<center><img src='./files/0.1.png'/><img src='./files/0.2.png'/></center>
+<br/>
+<center><img src='./files/0.3.png'/><img src='./files/0.4.png'/></center>
+
+
+<h1><a id='bloque2'>Desarrollo de la actividad</a></h1>
+<ul>
+<li>Lo primero que haremos sera promocionar nuestro servidor a Controlador de dominio de Active Directory.</li>
+
+<br/>
+<br/>
+<center><img src='./files/1.png'/><img src='./files/2.png'/></center>
+<br/>
+<center><img src='./files/3.png'/><img src='./files/4.png'/></center>
+<br/>
+<center><img src='./files/5.png'/></center>
+
+<br/>
+<br/>
+
+<li>Añadiremos la ruta de la carpeta de instalacion de gAWK para poder ejecutarlo desde cualquier ruta</li>
+<br/>
+<center><img src='./files/6.png'/></center>
+<br/>
+
+<li>Nos descargaremos el archivo XCACLS.vbs y lo descomprimiremos en C:\Windows.</li>
+<br/>
+<center><img src='./files/7.png'/><img src='./files/8.png'/></center>
+<br/>
+<li>Modificaremos la funcion de IsOSSupported, añadiendo --> ,"6.0","6.1" , a las versiones soportadas </li>
+<center><img src='./files/9.png'/></center>
+<br/>
+<li>Con este comando cambiaremos el interprete de scripts de windows de wscript a cscript</li>
+<br/>
+<center><img src='./files/10.png'/></center>
+<br/>
+<li>Ejecutamos XCACLS con el nuevo interprete y comprobamos que podemos ejecutarlo, viendo permisos ntfs de una carpeta </li>
+<br/>
+<center><img src='./files/11.png'/><img src='./files/12.png'/></center>
+<br/>
+<li>Empezamos a crear los scripts, aqui el usuarios.csv</li>
+<br/>
+<center><img src='./files/13.png'/></center>
+<br/>
+<li>El archivo Alta.awk</li>
+<br/>
+<center><img src='./files/14.png'/></center>
+<br/>
+<li>Ejecutamos este comando y se creara el archivo, crear.bat</li>
+<br/>
+<center><img src='./files/15.png'/></center>
+<br/>
+<li>Y tiene esta pinta</li>
+<br/>
+<center><img src='./files/16.png'/></center>
+
+<br/>
+
+<li>Finalmente si esta correcto el archivo crear.bat, lo ejecutamos desde la consola, y nos creara los usuarios dentro de sus unidades organizativas, y creara sus carpetas en C:\Datos\</li>
+<br/>
+<center><img src='./files/17.png'/></center>
+
+</ul>
+
+<h1><a id='bloque3'>Comprobaci&oacute;n</a></h1>
+
+<ul>
+	<li>Aqui veremos todos los usuarios creados, sus carpetas y sus propiedades</li>
+<br/>
+<center><img src='./files/18.png'/></center>
+<br/>
+<br/>
+<center><img src='./files/19.png'/><img src='./files/20.png'/></center>
+			
+</ul>
+</body>
+</html>
