@@ -1,0 +1,123 @@
+<html>
+<head>
+	<title>NFS (Network File System)</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Administraci&oacute;n de Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>NFS (Network File System)</i></li>
+    <li><b>Componentes del grupo:</b> <i>Victor Garcia</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Windows</a> | <a href='#bloque2'>Linux</a>
+</div>
+<h1><a id='bloque1'>Windows</a></h1>
+<p>Comenzamos habilitando el rol o funcion de Servicios de Archivo</p>
+<br/>
+<br/>
+<center><img src='./files/Windows/1.png'/><img src='./files/Windows/2.png'/></center>
+<br/>
+<center><img src='./files/Windows/3.png'/><img src='./files/Windows/4.png'/></center>
+<br/>
+<center><img src='./files/Windows/5.png'/></center>
+<br/>
+<p>Una vez instalado, crearemos una carpeta y la compartiremos como NFS.</p>
+<br/>
+<br/>
+<center><img src='./files/Windows/6.png'/><img src='./files/Windows/7.png'/></center>
+<br/>
+<center><img src='./files/Windows/8.png'/><img src='./files/Windows/9.png'/></center>
+<br/>
+<br/>
+<p>Ahora pasaremos a nuestro cliente, para que sea posible necesitaremos un Windows 7 Enterprise.</p>
+<br/>
+<br/>
+<p>Habilitaremos la caracteristica de Servicios para NFS y dentro de él Cliente para NFS</p>
+<br/>
+<center><img src='./files/Windows/10.png'/></center>
+<br/>
+<p>Una vez ya habilitada la caracteristica, iniciamos el servicio en el cliente, y nos conectamos a nuestro servidor.</p>
+<br/>
+<br/>
+<center><img src='./files/Windows/11.png'/><img src='./files/Windows/12.png'/></center>
+<br/>
+<center><img src='./files/Windows/13.png'/></center>
+<br/>
+
+<p>Para hacer las pruebas he tenido que usar el servidor de un compañero, ha sido por un problema de versiones de Windows Server.</p>
+<br/>
+<center><img src='./files/Windows/14.png'/></center>
+
+<h1><a id='bloque2'>Linux</a></h1>
+<ul>
+<p>Lo primero que haremos sera instalar NFS en nuestro Linux.</p>
+
+<br/>
+<br/>
+<center><img src='./files/Linux/1.png'/></center>
+<br/>
+<p>Crearemos una carpeta export y dentro de ella public y private, con sus respectivos permisos de carpeta.</p>
+<br/>
+<center><img src='./files/Linux/2.png'/></center>
+<br/>
+<p>Modificaremos el archivo exports, que se encuentra en /etc/, añadiremos al final del archivo las rutas de las carpetas, y los permisos que tendran los clientes que se conecten.</p>
+<br/>
+<center><img src='./files/Linux/3.png'/></center>
+<br/>
+<p>Una vez completados estos pasos, iniciaremos el servicio de NFS</p>
+<br/>
+<center><img src='./files/Linux/4.png'/></center>
+<br/>
+<p>Comprobaremos que se han añadido bien las carpetas que exportaremos con este comando</p>
+<br/>
+<center><img src='./files/Linux/5.png'/></center>
+<br/>
+<p>Ahora pasamos a nuestro cliente, le instalamos primero el paquete de NFS.</p>
+<br/>
+<center><img src='./files/Linux/6.png'/></center>
+<br/>
+<p>Comprobaremos que nuestro cliente y servidor con capaces de verse usando un ping para demostrarlo.</p>
+<br/>
+<center><img src='./files/Linux/7.png'/></center>
+<br/>
+<p>Con un nmap mas la ip de nuestro servidor comprobamos que el puerto de NFS esta abierto correctamente.</p>
+<br/>
+<center><img src='./files/Linux/8.png'/></center>
+<br/>
+<p>Crearemos las carpetas en el cliente y montaremos las carpetas del servidor en el cliente.</p>
+<br/>
+<center><img src='./files/Linux/10.png'/></center>
+<br/>
+<p>Y comprobamos que dentro de las carpetas estan los datos que creamos en el servidor, dentro de las carpetas del cliente.</p>
+<br/>
+<center><img src='./files/Linux/11.png'/><img src='./files/Linux/12.png'/></center>
+<br/>
+<center><img src='./files/Linux/13.png'/></center>
+<br/>
+<p>Como ultimo paso haremos que nuestro cliente monte las carpetas automaticamente modificando el archivo fstab que se encuentra en /etc/.</p>
+<br/>
+<center><img src='./files/Linux/fstab.png'/></center>
+<br/>
+<br/>
+<p>Una vez configurado fstab, reiniciamos el sistema, y comprobamos que las carpetas han sido montadas con un df -hT.</p>
+<br/>
+<center><img src='./files/Linux/df -hT.png'/></center>
+<br/>
+<br/>
+<br/>
+<p>Enlace al archivo fstab.</p>
+<br/>
+<center><a href='./files/fstab'>Descargar</a></center>
+
+</ul>
+</body>
+</html>
