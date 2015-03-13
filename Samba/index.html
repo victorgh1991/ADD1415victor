@@ -1,0 +1,120 @@
+<html>
+<head>
+	<title>A2: Recursos compartidos Samba (SMB/CIFS)</title>
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Administraci&oacute;n de Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>A2: Recursos compartidos Samba (SMB/CIFS)</i></li>
+    <li><b>Alumno:</b> <i>Victor Garcia</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Instalaci&oacute;n y configuraci&oacute;n</a> | <a href='#bloque2'>Windows</a> | <a href='#bloque3'>Linux</a>
+</div>
+<ul>
+<h1><a id='bloque1'>Instalaci&oacute;n y configuraci&oacute;n</a></h1>
+<li><p>Comenzamos con la instalaci&oacute;n de Samba y sus utilidades</p></li>
+</ br><center><img src='./files/1.png'></img></center>
+
+<li><p>Hacemos una copia del archivo de configuraci&oacute;n para poder cubrirnos en caso de fallo y lo rellenamos con los datos.</p></li>
+</ br><center><img src='./files/2.png'></img>   <img src='./files/3.png'></img></center>
+
+<li><p>Crearemos la carpeta Samba dentro de /var/ y dentro de la misma crearemos 3 subcarpetas, public, panaderos e informaticos</p></li>
+
+</ br><center><img src='./files/4.png'></img></center>
+
+<li><p>Modificamos el archivo /etc/passwd y en la linea del usuario smbguest, cambiamos /bin/bash por /bin/false, para que no pueda iniciar sesion mediante el login del sistema</p></li>
+</ br><center><img src='./files/5.png'></img></center>
+
+<li><p>Añadimos los usuarios creados al grupo usuariosamba</p></li>
+</ br><center><img src='./files/6.png'></img></center>
+
+<li><p>Y los añadimos a Samba</p></li>
+</ br><center><img src='./files/8.png'></img></center>
+
+<li><p>Ahora cambiaremos los permisos de las carpetas antes creadas, para que sean propietarios el usuario supersamba y el grupo usuariosamba.</p></li>
+</ br><center><img src='./files/7.png'></img></center>
+
+<li><p>Con pbdedit -L nuestro servidor samba nos mostrara sus usuarios.</p></li>
+</ br><center><img src='./files/9.png'></img></center>
+
+<li><p>Con el comando testparm comprobaremos que la configuracion de smb.conf es correcta.</p></li>
+</ br><center><img src='./files/10.png'></img></center>
+
+<li><p>Netstat -tap nos muestra la lista de puertos activos y en escucha.</p></li>
+</ br><center><img src='./files/11.png'></img></center>
+
+
+<p>Una vez terminadas las configuraciones comenzamos las pruebas.</p>
+<br>
+<a href='#bloque1'>Volver al inicio</a> 
+<br>
+
+<h1><a id='bloque2'>Windows</a></h1>
+
+<li><p>Abriendo un explorador de archivos y poniendo la IP de nuestro servidor en la barra de busquedas nos mostrara las carpetas compartidas en samba despues de una pantalla de login</p></li>
+</ br><center><img src='./files/12.png'></img></center>
+
+<li><p>Net use nos mostrara las unidades montadas en nuestro equipo.</p></li>
+</ br><center><img src='./files/13.png'></img></center>
+
+<li><p>Si vamos a nuestro servidor despues de esto podemos ver como el usuario ha solicitado acceder a las carpetas y las tiene montadas con el comando smbstatus</p></li>
+</ br><center><img src='./files/14.png'></img></center>
+
+<li><p>Para continuar desmontaremos las unidades.</p></li>
+</ br><center><img src='./files/15.png'></img></center>
+
+<li><p>Ahora comprobaremos el montaje del recurso desde una consola de comandos</p></li>
+</ br><center><img src='./files/16.png'></img></center>
+
+<li><p>Y aqui vemos como resultado la unidad montada en el equipo.</p></li>
+</ br><center><img src='./files/17.png'></img></center>
+
+<li><p>Si vamos al servidor y usamos los comandos que ya hemos visto, nos mostrara la carpeta montada y el usuario que lo ha solicitado, y como el puerto de escucha ha pasado al estado de establecido.</p></li>
+</ br><center><img src='./files/18.png'></img></center>
+
+<p>Terminamos con Windows y comenzamos con Linux.</p>
+<br>
+<a href='#bloque1'>Volver al inicio</a> 
+<br>
+
+<h1><a id='bloque3'>Linux</a></h1>
+
+<li><p>Si vamos a un sistema linux y en el explorador de archivos ponemos la IP del servidor, tal y como paso en windows nos saldra la pantalla de login y podremos despues de identificarnos ver las carpetas.</p></li>
+</ br><center><img src='./files/19.png'></img></center>
+
+<li><p>Probaremos si dentro de las carpetas compartidas podemos crear archivos o carpetas nuevos usando los usuarios especificos para ello.</p></li>
+</ br><center><img src='./files/20.png'><img src='./files/21.png'></img></img></center>
+
+<li><p>Netstat -L y smbstatus nos mostraran las carpetas montadas por los usuarios y los puertos de las conexiones establecidas.</p></li>
+</ br><center><img src='./files/22.png'></img></center>
+
+<li><p>Con el comando smbtree se nos mostrara una lista en arbol de todos los servidores samba de la red y sus recursos compartidos, la captura es solo de mi servidor.</p></li>
+</ br><center><img src='./files/23.png'></img></center>
+
+<li><p>Smbclient --list (ipservidor) nos mostrara la lista de carpetas compartidas del servidor y una lista de servidores de la red y grupo de trabajo.</p></li>
+</ br><center><img src='./files/24.png'></img></center>
+
+<li><p>Ahora probaremos montar las carpetas a traves de comandos.</p></li>
+</ br><center><img src='./files/25.png'></img></center>
+
+<li><p>Para terminar la practica, haremos que las carpetas se monten automaticamente en el cliente, para ello modificaremos el archivo fstab que encontramos en la ruta /etc/fstab.</p></li>
+</ br><center><img src='./files/26.png'></img></center>
+
+<li><p>Haremos un reinicio de la maquina cliente y al iniciar con el comando df -hT comprobamos que las carpetas han sido montadas correctamente en nuestro cliente samba.</p></li>
+</ br><center><img src='./files/27.png'></img></center>
+
+<a href='#bloque1'>Volver al inicio</a> 
+</ul>
+
+</ br>
+</body>
+</html>
