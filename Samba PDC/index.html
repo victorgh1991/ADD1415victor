@@ -1,0 +1,80 @@
+<html>
+<head>
+	<title>A4: Samba PDC</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Administraci&oacute;n de Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>A4: Samba PDC</i></li>
+    <li><b>Alumno:</b> <i>Victor Garcia</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+  </ul>
+  </div>
+</div>
+<ul>
+<h1>Samba PDC</h1>
+<li><p>Lo primero que haremos sera copiar el smb.conf anterior y lo configuramos</p></li>
+</ br><center><img src='./files/1.png'></img></center>
+<br>
+</ br><center><img src='./files/3.png'></img></center>
+
+<li><p>Crearemos las carpetas netlogon y profiles en la ruta "/var/lib/samba/"</p></li>
+
+</ br><center><img src='./files/2.png'></img></center>
+
+<li><p>Crearemos la carpeta var en la ruta "/usr/local/samba/"</p></li>
+</ br><center><img src='./files/5.png'></img></center>
+
+<li><p>Cambiamos la configuracion de red del servidor samba y tambien configuramos el archivo resolv.conf</p></li>
+</ br><center><img src='./files/6.png'></img><img src='./files/7.png'></img></center>
+
+<li><p>Creamos el grupo machines y dentro de el, client 315 y 415</p></li>
+</ br><center><img src='./files/9.png'></img></center>
+
+<li><p>Cambiamos el comportamiento de la contraseña de estos usuarios</p></li>
+</ br><center><img src='./files/10.png'></img></center>
+
+<li><p>Y los añadimos como usuarios samba.</p></li>
+</ br><center><img src='./files/11.png'></img></center>
+
+<li><p>Creamos los usuarios kirk, spock y sulu.</p></li>
+</ br><center><img src='./files/12.png'></img></center>
+
+<li><p>Y los metemos en el grupo enterprise.</p></li>
+</ br><center><img src='./files/13.png'></img></center>
+
+<li><p>Haremos lo mismo para los usuarios borg1, borg2 y borg3. Los creamos y los añadimos a su grupo</p></li>
+</ br><center><img src='./files/14.png'></img></center>
+
+<li><p>Una vez creados y metidos en los grupos procedemos a añadirlos como usuarios de samba.</p></li>
+</ br><center><img src='./files/15.png'></img></center>
+
+<li><p>Crearemos una carpeta personal para cada usuario en la ruta "/var/lib/samba/profiles/" en las que les daremos permisos a cada usuario para su carpeta</p></li>
+</ br><center><img src='./files/16.png'></img></center>
+
+<li><p>Cambiamos el nombre de equipo de nuestro cliente en windows.</p></li>
+</ br><center><img src='./files/17.png'></img></center>
+
+<li><p>Y lo unimos al dominio, nos pedira usuario y contraseña para poder entrar al dominio.</p></li>
+</ br><center><img src='./files/18.png'></img></center>
+
+
+<br>
+<br>
+<br>
+<br>
+
+<li><p>Al llegar a este ultimo punto nos ha fallado la practica y la hemos dejado aqui</p></li>
+
+
+</ul>
+
+</ br>
+</body>
+</html>
